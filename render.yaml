@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: custom-leantime
+    env: php
+    plan: free # Deploys on Render's free tier
+    buildCommand: |
+      composer install --no-dev --optimize-autoloader
+      npm install
+      npx mix --production
+    startCommand: apache2-foreground
